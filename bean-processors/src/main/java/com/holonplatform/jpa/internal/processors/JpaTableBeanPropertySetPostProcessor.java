@@ -19,8 +19,8 @@ import javax.annotation.Priority;
 import javax.persistence.Table;
 
 import com.holonplatform.core.beans.BeanPropertySet.Builder;
+import com.holonplatform.core.DataMappable;
 import com.holonplatform.core.beans.BeanPropertySetPostProcessor;
-import com.holonplatform.core.datastore.DataMappable;
 import com.holonplatform.core.internal.utils.AnnotationUtils;
 
 /**

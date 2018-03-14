@@ -19,8 +19,8 @@ import javax.annotation.Priority;
 import javax.persistence.Column;
 
 import com.holonplatform.core.beans.BeanProperty.Builder;
+import com.holonplatform.core.DataMappable;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
-import com.holonplatform.core.datastore.DataMappable;
 
 /**
  * A {@link BeanPropertyPostProcessor} to setup property configuration {@link DataMappable#PATH} property using JPA
