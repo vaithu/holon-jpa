@@ -1,0 +1,72 @@
+= Holon JPA
+:revnumber: {project-version}
+:apidir: ../api/holon-jpa
+:linkattrs:
+:sectnums:
+:nofooter:
+:toc: left
+:toclevels: 3
+
+Copyright © 2016-2017
+
+_Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically._
+
+== Introduction
+
+The Holon *JPA* module provides a set of.... TODO
+
+== Obtaining the artifacts
+
+The Holon Platform uses https://maven.apache.org[Maven^] for projects build and configuration. All the platform artifacts are published in the *Maven Central Repository*, so there is no need to explicitly declare additional repositories in your project `pom` file.
+
+At the top of each _section_ of this documentation you will find the Maven _coordinates_ (group id, artifact id and version) to obtain the artifact(s) as a dependency for your project.
+
+A *BOM (Bill Of Materials)* `pom` is provided to import the available dependencies for a specific version in your projects. The Maven coordinates for the core BOM are the following:
+
+_Maven coordinates_:
+[source, xml, subs="attributes+"]
+----
+<groupId>com.holon-platform.jpa</groupId>
+<artifactId>holon-jpa-bom</artifactId>
+<version>{revnumber}</version>
+----
+
+The BOM can be imported in a Maven project in the following way:
+
+[source, xml, subs="verbatim,quotes,attributes+"]
+----
+<dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>com.holon-platform.jpa</groupId>
+			<artifactId>holon-jpa-bom</artifactId>
+			<version>{revnumber}</version>
+			*<type>pom</type>*
+			*<scope>import</scope>*
+		</dependency>
+	</dependencies>
+</dependencyManagement>
+----
+
+=== Using the Platform BOM
+
+The Holon Platform provides an *overall Maven BOM (Bill of Materials)* to easily obtain all the available platform artifacts.
+
+See link:index.html#obtain-the-platform-artifacts[Obtain the platform artifacts] for details.
+
+== Loggers
+
+By default, the Holon platform uses the https://www.slf4j.org[SLF4J^] API for logging. The use of SLF4J is optional: it is enabled when the presence of SLF4J is detected in the classpath. Otherwise, logging will fall back to JUL (`java.util.logging`).
+
+The logger name for the *JPA Bean Processors* module is `com.holonplatform.jpa.processors`.
+
+== System requirements
+
+=== Java
+
+The Holon Platform JDBC Datastore module requires https://www.java.com[Java] *8* or higher.
+
+=== JPA API
+
+The *JPA API* classes must be present in classpath to enable JPA beans processing. The Holon JPA module is tested against the JPA API version *2.2*.
+

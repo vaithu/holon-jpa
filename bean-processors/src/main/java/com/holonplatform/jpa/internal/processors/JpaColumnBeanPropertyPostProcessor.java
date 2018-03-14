@@ -1,0 +1,56 @@
+/*
+ * Copyright 2016-2017 Axioma srl.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+package com.holonplatform.jpa.internal.processors;
+
+import javax.annotation.Priority;
+import javax.persistence.Column;
+
+import com.holonplatform.core.beans.BeanProperty.Builder;
+import com.holonplatform.core.beans.BeanPropertyPostProcessor;
+import com.holonplatform.core.datastore.DataMappable;
+
+/**
+ * A {@link BeanPropertyPostProcessor} to setup property configuration {@link DataMappable#PATH} property using JPA
+ * <code>Column</code> annotation.
+ *
+ * @since 5.1.0
+ */
+@Priority(1500)
+public class JpaColumnBeanPropertyPostProcessor extends AbstractJpaBeanPropertyPostProcessor {
+
+	/*
+	 * (non-Javadoc)
+	 * @see com.holonplatform.jpa.internal.processors.AbstractJpaBeanPropertyPostProcessor#processJpaBeanProperty(com.
+	 * holonplatform.core.beans.BeanProperty.Builder, java.lang.Class)
+	 */
+	@Override
+	protected Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass) {
+		if (!property.getConfiguration().getParameter(DataMappable.PATH).isPresent()) {
+			property.getAnnotation(Column.class).map(a -> a.name()).filter(n -> n.trim().length() > 0).ifPresent(n -> {
+				property.configuration(DataMappable.PATH, n);
+				LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: setted property [" + property
+						+ "] configuration data path [" + DataMappable.PATH.getKey() + "] to [" + n + "]");
+			});
+		} else {
+			LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: property [" + property
+					+ "] data path is already configured ["
+					+ property.getConfiguration().getParameter(DataMappable.PATH).get()
+					+ "]: skip JPA Column annotation processing");
+		}
+		return property;
+	}
+
+}
