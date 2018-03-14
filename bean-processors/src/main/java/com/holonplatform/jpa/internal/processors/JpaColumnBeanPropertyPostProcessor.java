@@ -15,11 +15,13 @@
  */
 package com.holonplatform.jpa.internal.processors;
 
+import java.util.Optional;
+
 import javax.annotation.Priority;
 import javax.persistence.Column;
 
-import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.DataMappable;
+import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
 
 /**
@@ -39,11 +41,20 @@ public class JpaColumnBeanPropertyPostProcessor extends AbstractJpaBeanPropertyP
 	@Override
 	protected Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass) {
 		if (!property.getConfiguration().getParameter(DataMappable.PATH).isPresent()) {
-			property.getAnnotation(Column.class).map(a -> a.name()).filter(n -> n.trim().length() > 0).ifPresent(n -> {
-				property.configuration(DataMappable.PATH, n);
+			final Optional<Column> methodColumn = property.getReadMethod().map(m -> m.getAnnotation(Column.class))
+					.filter(a -> a.name().trim().length() > 0);
+			if (methodColumn.isPresent()) {
+				property.configuration(DataMappable.PATH, methodColumn.get().name());
 				LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: setted property [" + property
-						+ "] configuration data path [" + DataMappable.PATH.getKey() + "] to [" + n + "]");
-			});
+						+ "] configuration data path to [" + methodColumn.get().name() + "]");
+			} else {
+				property.getAnnotation(Column.class).map(a -> a.name()).filter(n -> n.trim().length() > 0)
+						.ifPresent(n -> {
+							property.configuration(DataMappable.PATH, n);
+							LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: setted property [" + property
+									+ "] configuration data path [" + DataMappable.PATH.getKey() + "] to [" + n + "]");
+						});
+			}
 		} else {
 			LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: property [" + property
 					+ "] data path is already configured ["
