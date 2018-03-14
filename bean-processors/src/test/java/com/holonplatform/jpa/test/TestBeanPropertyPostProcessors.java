@@ -30,6 +30,7 @@ import com.holonplatform.core.property.PathProperty;
 import com.holonplatform.core.temporal.TemporalType;
 import com.holonplatform.jpa.test.data.TestEntityEnum;
 import com.holonplatform.jpa.test.data.TestJpaEntity;
+import com.holonplatform.jpa.test.data.TestJpaEntityEmbeddedId;
 
 public class TestBeanPropertyPostProcessors {
 
@@ -43,52 +44,70 @@ public class TestBeanPropertyPostProcessors {
 		assertNotNull(prp);
 		assertTrue(prp.getDataPath().isPresent());
 		assertEquals("code", prp.getDataPath().orElse(null));
-		
+
 		prp = PROPERTY_SET.getProperty("date").orElse(null);
 		assertNotNull(prp);
 		assertTrue(prp.getDataPath().isPresent());
 		assertEquals("the_date", prp.getDataPath().orElse(null));
 
 	}
-	
+
 	@Test
 	public void testIdPostProcessor() {
-		
+
 		Set<PathProperty<?>> ids = PROPERTY_SET.getIdentifiers();
 		assertFalse(ids.isEmpty());
 		assertEquals(1, ids.size());
 		assertEquals("id", ids.iterator().next().getName());
-		
+
 	}
-	
+
+	@Test
+	public void testEmbeddedIdPostProcessor() {
+
+		final BeanPropertySet<TestJpaEntityEmbeddedId> PS = BeanIntrospector.get()
+				.getPropertySet(TestJpaEntityEmbeddedId.class);
+
+		Set<PathProperty<?>> ids = PS.getIdentifiers();
+		assertFalse(ids.isEmpty());
+		assertEquals(1, ids.size());
+
+		final PathProperty<?> code = ids.iterator().next();
+		assertNotNull(code);
+
+		assertEquals("code", code.getName());
+		assertEquals("key", code.getDataPath().orElse(null));
+
+	}
+
 	@Test
 	public void testEnumeratedPostProcessor() {
-		
+
 		PathProperty<TestEntityEnum> prp = PROPERTY_SET.getProperty("enumeration", TestEntityEnum.class).orElse(null);
 		assertNotNull(prp);
 		assertTrue(prp.getConverter().isPresent());
 		assertEquals(1, prp.getConvertedValue(TestEntityEnum.SECOND));
-		
+
 		prp = PROPERTY_SET.getProperty("enumeration2", TestEntityEnum.class).orElse(null);
 		assertNotNull(prp);
 		assertTrue(prp.getConverter().isPresent());
 		assertEquals("FIRST", prp.getConvertedValue(TestEntityEnum.FIRST));
-		
+
 	}
-	
+
 	@Test
 	public void testTemporalPostProcessor() {
-		
+
 		PathProperty<?> prp = PROPERTY_SET.getProperty("date").orElse(null);
 		assertNotNull(prp);
 		assertTrue(prp.getConfiguration().getTemporalType().isPresent());
 		assertEquals(TemporalType.DATE, prp.getConfiguration().getTemporalType().get());
-		
+
 		prp = PROPERTY_SET.getProperty("date2").orElse(null);
 		assertNotNull(prp);
 		assertTrue(prp.getConfiguration().getTemporalType().isPresent());
 		assertEquals(TemporalType.DATE_TIME, prp.getConfiguration().getTemporalType().get());
-		
+
 	}
 
 }
