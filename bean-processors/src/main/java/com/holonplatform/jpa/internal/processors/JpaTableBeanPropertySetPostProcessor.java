@@ -19,11 +19,12 @@ import javax.annotation.Priority;
 import javax.persistence.Table;
 
 import com.holonplatform.core.beans.BeanPropertySet.Builder;
+import com.holonplatform.core.beans.BeanPropertySetPostProcessor;
 import com.holonplatform.core.datastore.DataMappable;
 import com.holonplatform.core.internal.utils.AnnotationUtils;
 
 /**
- * A {@link BeanPropertyPostSetProcessor} to setup property set configuration {@link DataMappable#PATH} property using
+ * A {@link BeanPropertySetPostProcessor} to setup property set configuration {@link DataMappable#PATH} property using
  * JPA <code>Table</code> annotation.
  *
  * @since 5.1.0
