@@ -20,13 +20,14 @@ import com.holonplatform.core.beans.BeanPropertySetPostProcessor;
 import com.holonplatform.core.internal.Logger;
 import com.holonplatform.core.internal.utils.ClassUtils;
 import com.holonplatform.jpa.internal.JpaAPIUtils;
+import com.holonplatform.jpa.processors.JpaBeanPostProcessor;
 
 /**
  * Base JPA {@link BeanPropertySetPostProcessor} which checks for JPA API availability before processing.
  *
  * @since 5.1.0
  */
-public abstract class AbstractJpaBeanPropertySetPostProcessor implements BeanPropertySetPostProcessor {
+public abstract class AbstractJpaBeanPropertySetPostProcessor implements BeanPropertySetPostProcessor, JpaBeanPostProcessor {
 
 	/**
 	 * Logger

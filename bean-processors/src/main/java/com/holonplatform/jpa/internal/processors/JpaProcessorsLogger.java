@@ -16,6 +16,7 @@
 package com.holonplatform.jpa.internal.processors;
 
 import com.holonplatform.core.internal.Logger;
+import com.holonplatform.jpa.processors.JpaBeanPostProcessor;
 
 /**
  * JPA bean processors logger provider.
@@ -24,7 +25,7 @@ import com.holonplatform.core.internal.Logger;
  */
 public interface JpaProcessorsLogger {
 
-	final static String NAME = "com.holonplatform.jpa.processors";
+	final static String NAME = JpaBeanPostProcessor.class.getPackage().getName();
 
 	/**
 	 * Get a {@link Logger} bound to {@link #NAME}.
