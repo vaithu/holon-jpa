@@ -26,6 +26,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "test_table")
@@ -50,6 +51,9 @@ public class TestJpaEntity implements Serializable {
 	@com.holonplatform.core.beans.Temporal(com.holonplatform.core.temporal.TemporalType.DATE_TIME)
 	@Temporal(TemporalType.DATE)
 	private Date date2;
+
+	@Transient
+	private String toIgnore;
 
 	public Long getId() {
 		return id;
@@ -89,6 +93,14 @@ public class TestJpaEntity implements Serializable {
 
 	public void setDate2(Date date2) {
 		this.date2 = date2;
+	}
+
+	public String getToIgnore() {
+		return toIgnore;
+	}
+
+	public void setToIgnore(String toIgnore) {
+		this.toIgnore = toIgnore;
 	}
 
 }

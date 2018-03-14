@@ -26,6 +26,7 @@ import com.holonplatform.jpa.internal.processors.JpaEnumeratedBeanPropertyPostPr
 import com.holonplatform.jpa.internal.processors.JpaIdentifierBeanPropertyPostProcessor;
 import com.holonplatform.jpa.internal.processors.JpaTableBeanPropertySetPostProcessor;
 import com.holonplatform.jpa.internal.processors.JpaTemporalBeanPropertyPostProcessor;
+import com.holonplatform.jpa.internal.processors.JpaTransientBeanPropertyPostProcessor;
 
 /**
  * Marker interface for JPA {@link BeanPropertyPostProcessor} and {@link BeanPropertySetPostProcessor}.
@@ -53,6 +54,7 @@ public interface JpaBeanPostProcessor {
 		beanIntrospector.addBeanPropertyPostProcessor(new JpaEnumeratedBeanPropertyPostProcessor());
 		beanIntrospector.addBeanPropertyPostProcessor(new JpaTemporalBeanPropertyPostProcessor());
 		beanIntrospector.addBeanPropertyPostProcessor(new JpaColumnBeanPropertyPostProcessor());
+		beanIntrospector.addBeanPropertyPostProcessor(new JpaTransientBeanPropertyPostProcessor());
 	}
 
 }

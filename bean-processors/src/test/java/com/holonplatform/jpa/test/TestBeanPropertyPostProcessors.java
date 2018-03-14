@@ -110,4 +110,11 @@ public class TestBeanPropertyPostProcessors {
 
 	}
 
+	@Test
+	public void testTransientPostProcessor() {
+
+		assertFalse(PROPERTY_SET.getProperty("toIgnore").isPresent());
+
+	}
+
 }

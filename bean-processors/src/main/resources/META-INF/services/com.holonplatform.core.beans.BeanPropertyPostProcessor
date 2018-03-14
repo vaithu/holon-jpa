@@ -2,3 +2,4 @@ com.holonplatform.jpa.internal.processors.JpaTemporalBeanPropertyPostProcessor
 com.holonplatform.jpa.internal.processors.JpaEnumeratedBeanPropertyPostProcessor
 com.holonplatform.jpa.internal.processors.JpaColumnBeanPropertyPostProcessor
 com.holonplatform.jpa.internal.processors.JpaIdentifierBeanPropertyPostProcessor
+com.holonplatform.jpa.internal.processors.JpaTransientBeanPropertyPostProcessor
