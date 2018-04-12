@@ -163,6 +163,21 @@ By default, the Holon platform uses the https://www.slf4j.org[SLF4J^] API for lo
 
 The logger name for the *JPA Bean Processors* module is `com.holonplatform.jpa.processors`.
 
+=== JPA entity post processors example
+
+The following example shows how the JPA post processors work during JPA entity bean introspection.
+
+[source, java]
+----
+include::{examplesdir}/com/holonplatform/jpa/examples/JpaPostProcessorsExample.java[tag=postprocessors,indent=0]
+----
+<1> A sample JPA entity definition: the JPA annotations handled by the post processors are declare at bean class and property level
+<2> Obtain a `BeanPropertySet` from the `MyEntity` JPA entity class using bean introspection API
+<3> The `PathProperty` with path `id` will be configured as property set _identifier_ property, since the `id` bean property is marked with the `@Id` annotation 
+<4> A _data path_ with value `txt` is configured for the `PathProperty` with path `textValue`
+<5> the `TemporalType.DATE` is is configured for the `PathProperty` with path `date`  
+<6> Since the `toIgnore` bean property is marked with `@Transient`, it is ignored during bean introspection and will not be part of the bean property set
+
 == System requirements
 
 === Java
@@ -172,4 +187,3 @@ The Holon Platform JDBC Datastore module requires https://www.java.com[Java] *8*
 === JPA API
 
 The *JPA API* classes must be present in classpath to enable JPA beans processing. The Holon JPA module is tested against the JPA API version *2.0*, *2.1* and *2.2*.
-
