@@ -71,6 +71,7 @@ The Holon Platform provides an *overall Maven BOM (Bill of Materials)* to easily
 
 See link:index.html#obtain-the-platform-artifacts[Obtain the platform artifacts] for details.
 
+[[JPAPostProcessors]]
 == JPA entity bean post processors
 
 _Maven coordinates_:
