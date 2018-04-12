@@ -1,4 +1,6 @@
-= Holon JPA
+= Holon Platform JPA Module - Reference manual
+:description: Holon platform JPA module reference documentation. \
+The JPA module provides module provides base support for the Java Persistence API (JPA) and makes available a set of bean post processors to deal with JPA entity annotations.
 :revnumber: {project-version}
 :apidir: ../api/holon-jpa
 :linkattrs:
@@ -7,13 +9,28 @@
 :toc: left
 :toclevels: 3
 
-Copyright © 2016-2017
+Copyright © 2016-2018
 
 _Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically._
 
 == Introduction
 
-The Holon *JPA* module provides a set of.... TODO
+The Holon *JPA* module provides base support for the _Java Persistence API_ (JPA).
+
+It makes available a set of bean _post processors_ to deal with JPA *entity* annotations, which can be used to configure bean properties at bean introspection time.
+
+TIP: See the link:holon-jpa-datastore.html[JPA Datastore] documentation to learn how to use the `Datastore` API to manage persistent data through a JPA persistence model in an abstract and implementation independent way.
+
+=== Sources and contributions
+
+The Holon Platform *JPA* module source code is available from the GitHub repository link:https://github.com/holon-platform/holon-jpa[https://github.com/holon-platform/holon-jpa^].
+
+See the repository `README` file for information about:
+
+* The source code structure.
+* How to build the module artifacts from sources.
+* Where to find the code examples.
+* How to contribute to the module development.
 
 == Obtaining the artifacts
 
@@ -54,6 +71,92 @@ The Holon Platform provides an *overall Maven BOM (Bill of Materials)* to easily
 
 See link:index.html#obtain-the-platform-artifacts[Obtain the platform artifacts] for details.
 
+== JPA entity bean post processors
+
+_Maven coordinates_:
+[source, xml, subs="attributes+"]
+----
+<groupId>com.holon-platform.jpa</groupId>
+<artifactId>holon-jpa-bean-processors</artifactId>
+<version>{revnumber}</version>
+----
+
+The `holon-jpa-bean-processors` artifact provides a set of Bean property and property set *post processors* which can be used to inspect standard *JPA entity annotations* on Java Beans to configure the bean properties accordingly when using the Holon Platform _Property model_ and _Bean instrospection_ APIs.
+
+NOTE: See the link:holon-core.thml#Property[Property model^] documentation for information about the Holon Platform Property model and the link:holon-core.thml#Beans[Java Beans support^] documentation for information about the Holon Platform Java Beans support and the integration strategies with the _Property model_ architecture.
+
+The Holon Platform *Bean instrospection API* supports two types of _post processors_ which can be used to extend and enrich the Bean introspection strategy:
+
+* The link:holon-core.thml#BeanPropertyPostProcessor[BeanPropertyPostProcessor^] API at *property* level, which allows to attend in the Bean properties introspection strategy, i.e. the process to transform each Bean property into a Holon Platform link:holon-core.thml#PathProperty[PathProperty^] representation, tipically to provide additional property configuration capabilities.
+
+* The link:holon-core.thml#BeanPropertySetPostProcessor[BeanPropertySetPostProcessor^] API at *property set* level, which allows to attend in the link:holon-core.thml#BeanPropertySet[BeanPropertySet^] creation strategy, providing additional configuration capabilities.
+
+See the <<JPAPropertyPostProcessors>> and <<JPAPropertyPostSetProcessors>> to learn about the available post processors.
+
+=== Post processors registration
+
+The JPA post processors provided by the JPA module relies on the standard _Java service extensions_ feature to *auto-register* themself in the link:holon-core.thml#BeanIntrospector[BeanIntrospector] API.
+
+This way, when the `holon-jpa-bean-processors` artifact is available in classpath, the JPA post processors are automatically registered and made available to the Bean introspection API.
+
+IMPORTANT: The JPA API classes must be available in classpath to enable the JPA bean post processors.
+
+==== Direct registration
+
+When the auto registration strategy is not applicable for any reason, the link:{apidir}/com/holonplatform/jpa/processors/JpaBeanPostProcessor.html[JpaBeanPostProcessor^] API provides a static method to explicitly perform the JPA post processors registration in a `BeanIntrospector` API instance: `registerPostProcessors(BeanIntrospector beanIntrospector)`.
+
+[[JPAPropertyPostProcessors]]
+=== JPA bean *property* post processors
+
+==== Entity identifiers (`@Id` and `@EmbeddedId` annotations)
+
+This post processor deals with the JPA `@Id` and `@EmbeddedId` annotations to detect the JPA entity _identifier_ attributes.
+
+Each Bean property declared as JPA entity identifier is declared as Bean `PropertySet` *identifier property*,  using the corresponding `PathProperty` representation.
+
+See the link:holon-core.thml#IdentifierProperties[IdentifierProperties^] documentation for information about the property set identifier properties.
+
+==== `@Enumerated` annotation
+
+This post processor deals with the JPA `@Enumerated` annotation.
+
+When the `@Enumerated` annotation is detected on a Bean property, the post processor configures a link:holon-core.thml#PropertyValueConverter[PropertyValueConverter^] for the corresponding `PathProperty` to automatically handle the data model value conversions to the Java _enumeration_ type and back, using the *ordinal* or *String* representation according to the `EnumType` declared in the `@Enumerated` annotation.
+
+This post processor skips the converter setup if a `PropertyValueConverter` is already configured for the property, for example using the `@Converter` annotation. See the <<BuiltinBeanPostProcessors>> documentation section for details.
+
+==== `@Temporal` annotation
+
+This post processor deals with the JPA `@Temporal` annotation.
+
+When the `@Temporal` annotation is detected on a Bean property, the `TemporalType` configuration attribute of the corresponding `PathProperty` is setted accordingly to the declared JPA temporal type value.
+
+See the link:holon-core.thml#PropertyConfiguration[PropertyConfiguration^] documentation for information about the property temporal type configuration attribute.
+
+==== `@Transient` annotation
+
+This post processor deals with the JPA `@Transient` annotation.
+
+When the `@Transient` annotation is detected on a Bean property, that property will be *ignored* by the Bean introspection API and will not be part of the eventual Bean property set.
+
+==== `@Column` annotation
+
+This post processor deals with the JPA `@Column` annotation.
+
+When the `@Column` annotation is detected on a Bean property or getter method and the `name()` attribute is provided, the *column name* is registered in the corresponding `PathProperty` configuration as *data path* mapping, using the `DataMappable.PATH` configuration property.
+
+See the link:holon-core.thml#DataMappable[DataMappable^] documentation for information about the data path representation.
+
+[[JPAPropertyPostSetProcessors]]
+=== JPA bean *property set* post processors
+
+==== `@Table` annotation
+
+This post processor deals with the JPA `@Table` entity annotation.
+
+When the `@Table` annotation is detected on a Bean class and the `name()` attribute is provided, the *table name* is registered in the `BeanPropertySet` configuration as *data path* mapping, using the `DataMappable.PATH` configuration property.
+
+See the link:holon-core.thml#DataMappable[DataMappable^] documentation for information about the data path representation.
+
 == Loggers
 
 By default, the Holon platform uses the https://www.slf4j.org[SLF4J^] API for logging. The use of SLF4J is optional: it is enabled when the presence of SLF4J is detected in the classpath. Otherwise, logging will fall back to JUL (`java.util.logging`).
@@ -68,5 +171,5 @@ The Holon Platform JDBC Datastore module requires https://www.java.com[Java] *8*
 
 === JPA API
 
-The *JPA API* classes must be present in classpath to enable JPA beans processing. The Holon JPA module is tested against the JPA API version *2.2*.
+The *JPA API* classes must be present in classpath to enable JPA beans processing. The Holon JPA module is tested against the JPA API version *2.0*, *2.1* and *2.2*.
 
