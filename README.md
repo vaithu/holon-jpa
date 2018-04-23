@@ -36,7 +36,7 @@ _Maven BOM:_
     <dependency>
         <groupId>com.holon-platform.jpa</groupId>
         <artifactId>holon-jpa-bom</artifactId>
-        <version>5.1.0-SNAPSHOT</version>
+        <version>5.1.0</version>
         <type>pom</type>
         <scope>import</scope>
     </dependency>
