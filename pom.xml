@@ -57,7 +57,7 @@
 		<bintray.package>holon-jpa</bintray.package>
 
 		<!-- Holon core -->
-		<holon.core.version>5.1.0-SNAPSHOT</holon.core.version>
+		<holon.core.version>5.1.0</holon.core.version>
 
 		<!--JPA API -->
 		<jpa.api.version>2.2</jpa.api.version>
