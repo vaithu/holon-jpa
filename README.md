@@ -1,5 +1,7 @@
 # Holon platform JPA module
 
+> Latest release: [5.1.0](#obtain-the-artifacts)
+
 This is the base __JPA__ module of the [Holon Platform](https://holon-platform.com), which provides base support for the _Java Persistence API_.
 
 The module provides the `holon-jpa-bean-processors` artifact, which provides a set of Holon _bean property_ and _bean property set_ post processors to deal with JPA entity annotations, using it to configure bean properties at bean introspection time.
