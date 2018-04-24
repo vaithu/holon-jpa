@@ -1,1 +1,1 @@
-com.holonplatform.jpa.internal.processors.JpaTableBeanPropertySetPostProcessor
+com.holonplatform.jpa.processors.internal.JpaTableBeanPropertySetPostProcessor

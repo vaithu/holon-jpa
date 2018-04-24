@@ -13,14 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.holonplatform.jpa.internal.processors;
+package com.holonplatform.jpa.processors.internal;
 
 import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
 import com.holonplatform.core.internal.Logger;
 import com.holonplatform.core.internal.utils.ClassUtils;
-import com.holonplatform.jpa.internal.JpaAPIUtils;
 import com.holonplatform.jpa.processors.JpaBeanPostProcessor;
+import com.holonplatform.jpa.processors.internal.utils.JpaAPIUtils;
 
 /**
  * Base JPA {@link BeanPropertyPostProcessor} which checks for JPA API availability before processing.
