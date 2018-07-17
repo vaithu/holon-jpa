@@ -18,5 +18,5 @@ package com.holonplatform.jpa.test.data;
 public enum TestEntityEnum {
 
 	FIRST, SECOND;
-	
+
 }

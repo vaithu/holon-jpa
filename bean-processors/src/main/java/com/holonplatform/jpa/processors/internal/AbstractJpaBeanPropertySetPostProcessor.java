@@ -27,7 +27,8 @@ import com.holonplatform.jpa.processors.internal.utils.JpaAPIUtils;
  *
  * @since 5.1.0
  */
-public abstract class AbstractJpaBeanPropertySetPostProcessor implements BeanPropertySetPostProcessor, JpaBeanPostProcessor {
+public abstract class AbstractJpaBeanPropertySetPostProcessor
+		implements BeanPropertySetPostProcessor, JpaBeanPostProcessor {
 
 	/**
 	 * Logger
