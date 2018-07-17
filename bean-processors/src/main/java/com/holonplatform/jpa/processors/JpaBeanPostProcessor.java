@@ -21,12 +21,12 @@ import com.holonplatform.core.beans.BeanIntrospector;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
 import com.holonplatform.core.beans.BeanPropertySetPostProcessor;
 import com.holonplatform.core.internal.utils.ObjectUtils;
-import com.holonplatform.jpa.internal.processors.JpaColumnBeanPropertyPostProcessor;
-import com.holonplatform.jpa.internal.processors.JpaEnumeratedBeanPropertyPostProcessor;
-import com.holonplatform.jpa.internal.processors.JpaIdentifierBeanPropertyPostProcessor;
-import com.holonplatform.jpa.internal.processors.JpaTableBeanPropertySetPostProcessor;
-import com.holonplatform.jpa.internal.processors.JpaTemporalBeanPropertyPostProcessor;
-import com.holonplatform.jpa.internal.processors.JpaTransientBeanPropertyPostProcessor;
+import com.holonplatform.jpa.processors.internal.JpaColumnBeanPropertyPostProcessor;
+import com.holonplatform.jpa.processors.internal.JpaEnumeratedBeanPropertyPostProcessor;
+import com.holonplatform.jpa.processors.internal.JpaIdentifierBeanPropertyPostProcessor;
+import com.holonplatform.jpa.processors.internal.JpaTableBeanPropertySetPostProcessor;
+import com.holonplatform.jpa.processors.internal.JpaTemporalBeanPropertyPostProcessor;
+import com.holonplatform.jpa.processors.internal.JpaTransientBeanPropertyPostProcessor;
 
 /**
  * Marker interface for JPA {@link BeanPropertyPostProcessor} and {@link BeanPropertySetPostProcessor}.
