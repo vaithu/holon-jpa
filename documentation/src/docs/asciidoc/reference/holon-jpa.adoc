@@ -19,7 +19,7 @@ The Holon *JPA* module provides base support for the _Java Persistence API_ (JPA
 
 It makes available a set of bean _post processors_ to deal with JPA *entity* annotations, which can be used to configure bean properties at bean introspection time.
 
-TIP: See the link:holon-jpa-datastore.html[JPA Datastore] documentation to learn how to use the `Datastore` API to manage persistent data through a JPA persistence model in an abstract and implementation independent way.
+TIP: See the link:holon-datastore-jpa.html[JPA Datastore^] documentation to learn how to use the `Datastore` API to manage persistent data through a JPA persistence model in an abstract and implementation independent way.
 
 === Sources and contributions
 
@@ -84,19 +84,19 @@ _Maven coordinates_:
 
 The `holon-jpa-bean-processors` artifact provides a set of Bean property and property set *post processors* which can be used to inspect standard *JPA entity annotations* on Java Beans to configure the bean properties accordingly when using the Holon Platform _Property model_ and _Bean instrospection_ APIs.
 
-NOTE: See the link:holon-core.thml#Property[Property model^] documentation for information about the Holon Platform Property model and the link:holon-core.thml#Beans[Java Beans support^] documentation for information about the Holon Platform Java Beans support and the integration strategies with the _Property model_ architecture.
+NOTE: See the link:holon-core.html#Property[Property model^] documentation for information about the Holon Platform Property model and the link:holon-core.html#Beans[Java Beans support^] documentation for information about the Holon Platform Java Beans support and the integration strategies with the _Property model_ architecture.
 
 The Holon Platform *Bean instrospection API* supports two types of _post processors_ which can be used to extend and enrich the Bean introspection strategy:
 
-* The link:holon-core.thml#BeanPropertyPostProcessor[BeanPropertyPostProcessor^] API at *property* level, which allows to attend in the Bean properties introspection strategy, i.e. the process to transform each Bean property into a Holon Platform link:holon-core.thml#PathProperty[PathProperty^] representation, tipically to provide additional property configuration capabilities.
+* The link:holon-core.html#BeanPropertyPostProcessor[BeanPropertyPostProcessor^] API at *property* level, which allows to attend in the Bean properties introspection strategy, i.e. the process to transform each Bean property into a Holon Platform link:holon-core.html#PathProperty[PathProperty^] representation, tipically to provide additional property configuration capabilities.
 
-* The link:holon-core.thml#BeanPropertySetPostProcessor[BeanPropertySetPostProcessor^] API at *property set* level, which allows to attend in the link:holon-core.thml#BeanPropertySet[BeanPropertySet^] creation strategy, providing additional configuration capabilities.
+* The link:holon-core.html#BeanPropertySetPostProcessor[BeanPropertySetPostProcessor^] API at *property set* level, which allows to attend in the link:holon-core.html#BeanPropertySet[BeanPropertySet^] creation strategy, providing additional configuration capabilities.
 
 See the <<JPAPropertyPostProcessors>> and <<JPAPropertyPostSetProcessors>> to learn about the available post processors.
 
 === Post processors registration
 
-The JPA post processors provided by the JPA module relies on the standard _Java service extensions_ feature to *auto-register* themself in the link:holon-core.thml#BeanIntrospector[BeanIntrospector] API.
+The JPA post processors provided by the JPA module relies on the standard _Java service extensions_ feature to *auto-register* themself in the link:holon-core.html#BeanIntrospector[BeanIntrospector] API.
 
 This way, when the `holon-jpa-bean-processors` artifact is available in classpath, the JPA post processors are automatically registered and made available to the Bean introspection API.
 
@@ -115,15 +115,15 @@ This post processor deals with the JPA `@Id` and `@EmbeddedId` annotations to de
 
 Each Bean property declared as JPA entity identifier is declared as Bean `PropertySet` *identifier property*,  using the corresponding `PathProperty` representation.
 
-See the link:holon-core.thml#IdentifierProperties[IdentifierProperties^] documentation for information about the property set identifier properties.
+See the link:holon-core.html#IdentifierProperties[IdentifierProperties^] documentation for information about the property set identifier properties.
 
 ==== `@Enumerated` annotation
 
 This post processor deals with the JPA `@Enumerated` annotation.
 
-When the `@Enumerated` annotation is detected on a Bean property, the post processor configures a link:holon-core.thml#PropertyValueConverter[PropertyValueConverter^] for the corresponding `PathProperty` to automatically handle the data model value conversions to the Java _enumeration_ type and back, using the *ordinal* or *String* representation according to the `EnumType` declared in the `@Enumerated` annotation.
+When the `@Enumerated` annotation is detected on a Bean property, the post processor configures a link:holon-core.html#PropertyValueConverter[PropertyValueConverter^] for the corresponding `PathProperty` to automatically handle the data model value conversions to the Java _enumeration_ type and back, using the *ordinal* or *String* representation according to the `EnumType` declared in the `@Enumerated` annotation.
 
-This post processor skips the converter setup if a `PropertyValueConverter` is already configured for the property, for example using the `@Converter` annotation. See the <<BuiltinBeanPostProcessors>> documentation section for details.
+This post processor skips the converter setup if a `PropertyValueConverter` is already configured for the property, for example using the `@Converter` annotation. See the link:holon-core.html#BuiltinBeanPostProcessors[Builtin Bean post processors^] documentation section for details.
 
 ==== `@Temporal` annotation
 
@@ -131,7 +131,7 @@ This post processor deals with the JPA `@Temporal` annotation.
 
 When the `@Temporal` annotation is detected on a Bean property, the `TemporalType` configuration attribute of the corresponding `PathProperty` is setted accordingly to the declared JPA temporal type value.
 
-See the link:holon-core.thml#PropertyConfiguration[PropertyConfiguration^] documentation for information about the property temporal type configuration attribute.
+See the link:holon-core.html#PropertyConfiguration[PropertyConfiguration^] documentation for information about the property temporal type configuration attribute.
 
 ==== `@Transient` annotation
 
@@ -145,7 +145,7 @@ This post processor deals with the JPA `@Column` annotation.
 
 When the `@Column` annotation is detected on a Bean property or getter method and the `name()` attribute is provided, the *column name* is registered in the corresponding `PathProperty` configuration as *data path* mapping, using the `DataMappable.PATH` configuration property.
 
-See the link:holon-core.thml#DataMappable[DataMappable^] documentation for information about the data path representation.
+See the link:holon-core.html#DataMappable[DataMappable^] documentation for information about the data path representation.
 
 [[JPAPropertyPostSetProcessors]]
 === JPA bean *property set* post processors
@@ -156,7 +156,7 @@ This post processor deals with the JPA `@Table` entity annotation.
 
 When the `@Table` annotation is detected on a Bean class and the `name()` attribute is provided, the *table name* is registered in the `BeanPropertySet` configuration as *data path* mapping, using the `DataMappable.PATH` configuration property.
 
-See the link:holon-core.thml#DataMappable[DataMappable^] documentation for information about the data path representation.
+See the link:holon-core.html#DataMappable[DataMappable^] documentation for information about the data path representation.
 
 == Loggers
 
