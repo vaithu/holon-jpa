@@ -44,13 +44,13 @@ public class JpaColumnBeanPropertyPostProcessor extends AbstractJpaBeanPropertyP
 			final Optional<Column> methodColumn = property.getReadMethod().map(m -> m.getAnnotation(Column.class))
 					.filter(a -> a.name().trim().length() > 0);
 			if (methodColumn.isPresent()) {
-				property.configuration(DataMappable.PATH, methodColumn.get().name());
+				property.withConfiguration(DataMappable.PATH, methodColumn.get().name());
 				LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: setted property [" + property
 						+ "] configuration data path to [" + methodColumn.get().name() + "]");
 			} else {
 				property.getAnnotation(Column.class).map(a -> a.name()).filter(n -> n.trim().length() > 0)
 						.ifPresent(n -> {
-							property.configuration(DataMappable.PATH, n);
+							property.withConfiguration(DataMappable.PATH, n);
 							LOGGER.debug(() -> "JpaColumnBeanPropertyPostProcessor: setted property [" + property
 									+ "] configuration data path [" + DataMappable.PATH.getKey() + "] to [" + n + "]");
 						});
