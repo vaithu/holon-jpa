@@ -1,6 +1,6 @@
 # Holon platform JPA module
 
-> Latest release: [5.2.3](#obtain-the-artifacts)
+> Latest release: [5.3.0](#obtain-the-artifacts)
 
 This is the base __JPA__ module of the [Holon Platform](https://holon-platform.com), which provides base support for the _Java Persistence API_.
 
@@ -38,7 +38,7 @@ _Maven BOM:_
     <dependency>
         <groupId>com.holon-platform.jpa</groupId>
         <artifactId>holon-jpa-bom</artifactId>
-        <version>5.2.3</version>
+        <version>5.3.0</version>
         <type>pom</type>
         <scope>import</scope>
     </dependency>
