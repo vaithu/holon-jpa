@@ -17,8 +17,8 @@ package com.holonplatform.jpa.processors.internal;
 
 import java.util.Optional;
 
-import javax.annotation.Priority;
-import javax.persistence.Column;
+import jakarta.annotation.Priority;
+import jakarta.persistence.Column;
 
 import com.holonplatform.core.DataMappable;
 import com.holonplatform.core.beans.BeanProperty.Builder;

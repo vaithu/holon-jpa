@@ -15,9 +15,9 @@
  */
 package com.holonplatform.jpa.processors.internal;
 
-import javax.annotation.Priority;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Id;
+import jakarta.annotation.Priority;
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Id;
 
 import com.holonplatform.core.beans.BeanProperty;
 import com.holonplatform.core.beans.BeanProperty.Builder;

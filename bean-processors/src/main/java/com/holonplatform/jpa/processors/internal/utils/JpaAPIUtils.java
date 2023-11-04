@@ -56,7 +56,7 @@ public final class JpaAPIUtils implements Serializable {
 			Boolean present = JPA_API_PRESENT.get(classLoader);
 			return (present != null && present.booleanValue());
 		}
-		boolean present = ClassUtils.isPresent("javax.persistence.Persistence", classLoader);
+		boolean present = ClassUtils.isPresent("jakarta.persistence.Persistence", classLoader);
 		JPA_API_PRESENT.put(classLoader, present);
 		return present;
 	}

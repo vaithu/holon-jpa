@@ -15,8 +15,8 @@
  */
 package com.holonplatform.jpa.processors.internal;
 
-import javax.annotation.Priority;
-import javax.persistence.Transient;
+import jakarta.annotation.Priority;
+import jakarta.persistence.Transient;
 
 import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;

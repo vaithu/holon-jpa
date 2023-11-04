@@ -15,8 +15,8 @@
  */
 package com.holonplatform.jpa.processors.internal;
 
-import javax.annotation.Priority;
-import javax.persistence.Temporal;
+import jakarta.annotation.Priority;
+import jakarta.persistence.Temporal;
 
 import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
@@ -56,11 +56,11 @@ public class JpaTemporalBeanPropertyPostProcessor extends AbstractJpaBeanPropert
 	}
 
 	/**
-	 * Convert a JPA {@link javax.persistence.TemporalType} enumeration value into a {@link TemporalType} value.
+	 * Convert a JPA {@link jakarta.persistence.TemporalType} enumeration value into a {@link TemporalType} value.
 	 * @param temporalType JPA enumeration value
 	 * @return {@link TemporalType} value
 	 */
-	private static TemporalType convert(javax.persistence.TemporalType temporalType) {
+	private static TemporalType convert(jakarta.persistence.TemporalType temporalType) {
 		if (temporalType != null) {
 			switch (temporalType) {
 			case DATE:

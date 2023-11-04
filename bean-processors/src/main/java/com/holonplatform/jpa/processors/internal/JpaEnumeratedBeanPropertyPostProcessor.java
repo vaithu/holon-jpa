@@ -15,9 +15,9 @@
  */
 package com.holonplatform.jpa.processors.internal;
 
-import javax.annotation.Priority;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import jakarta.annotation.Priority;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;

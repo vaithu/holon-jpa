@@ -15,8 +15,8 @@
  */
 package com.holonplatform.jpa.test.data;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
+import jakarta.persistence.Column;
+import jakarta.persistence.EmbeddedId;
 
 public class TestJpaEntityEmbeddedId {
 
