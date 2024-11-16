@@ -24,10 +24,10 @@ import com.holonplatform.core.beans.BeanIntrospector;
 import com.holonplatform.core.beans.BeanPropertySet;
 import com.holonplatform.jpa.test.data.TestJpaEntity;
 
-public class TestBeanPropertySetPostProcessors {
+class TestBeanPropertySetPostProcessors {
 
 	@Test
-	public void testTablePostProcessor() {
+	void testTablePostProcessor() {
 
 		final BeanPropertySet<TestJpaEntity> propertySet = BeanIntrospector.get().getPropertySet(TestJpaEntity.class);
 

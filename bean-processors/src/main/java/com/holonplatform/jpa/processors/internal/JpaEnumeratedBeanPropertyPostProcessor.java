@@ -44,7 +44,7 @@ public class JpaEnumeratedBeanPropertyPostProcessor extends AbstractJpaBeanPrope
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	protected Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass) {
-		if (!property.getConverter().isPresent()) {
+		if (property.getConverter().isEmpty()) {
 			property.getAnnotation(Enumerated.class).ifPresent(a -> {
 				final EnumType enumType = a.value();
 				if (enumType == EnumType.STRING) {

@@ -40,7 +40,7 @@ public class JpaColumnBeanPropertyPostProcessor extends AbstractJpaBeanPropertyP
 	 */
 	@Override
 	protected Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass) {
-		if (!property.getConfiguration().getParameter(DataMappable.PATH).isPresent()) {
+		if (property.getConfiguration().getParameter(DataMappable.PATH).isEmpty()) {
 			final Optional<Column> methodColumn = property.getReadMethod().map(m -> m.getAnnotation(Column.class))
 					.filter(a -> a.name().trim().length() > 0);
 			if (methodColumn.isPresent()) {

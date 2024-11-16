@@ -47,7 +47,7 @@ public class JpaIdentifierBeanPropertyPostProcessor extends AbstractJpaBeanPrope
 		});
 		// check EmbeddedId
 		property.getParent().ifPresent(parent -> {
-			if (parent instanceof BeanProperty && ((BeanProperty<?>) parent).hasAnnotation(EmbeddedId.class)) {
+			if (parent instanceof BeanProperty beanProperty && beanProperty.hasAnnotation(EmbeddedId.class)) {
 				property.identifier(true);
 				LOGGER.debug(() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property
 						+ "] setted as identifier since part of an EmbeddedId");

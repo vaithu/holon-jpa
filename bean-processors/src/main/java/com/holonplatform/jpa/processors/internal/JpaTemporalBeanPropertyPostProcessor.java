@@ -41,7 +41,7 @@ public class JpaTemporalBeanPropertyPostProcessor extends AbstractJpaBeanPropert
 	 */
 	@Override
 	protected Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass) {
-		if (!property.getConfiguration().getTemporalType().isPresent()) {
+		if (property.getConfiguration().getTemporalType().isEmpty()) {
 			property.getAnnotation(Temporal.class).ifPresent(a -> {
 				property.temporalType(convert(a.value()));
 				LOGGER.debug(() -> "JpaTemporalBeanPropertyPostProcessor: setted property [" + property

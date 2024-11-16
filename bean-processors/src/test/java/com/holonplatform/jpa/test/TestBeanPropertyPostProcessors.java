@@ -32,13 +32,13 @@ import com.holonplatform.jpa.test.data.TestEntityEnum;
 import com.holonplatform.jpa.test.data.TestJpaEntity;
 import com.holonplatform.jpa.test.data.TestJpaEntityEmbeddedId;
 
-public class TestBeanPropertyPostProcessors {
+class TestBeanPropertyPostProcessors {
 
 	private final static BeanPropertySet<TestJpaEntity> PROPERTY_SET = BeanIntrospector.get()
 			.getPropertySet(TestJpaEntity.class);
 
 	@Test
-	public void testColumPostProcessor() {
+	void testColumPostProcessor() {
 
 		PathProperty<?> prp = PROPERTY_SET.getProperty("id").orElse(null);
 		assertNotNull(prp);
@@ -53,7 +53,7 @@ public class TestBeanPropertyPostProcessors {
 	}
 
 	@Test
-	public void testIdPostProcessor() {
+	void testIdPostProcessor() {
 
 		Set<PathProperty<?>> ids = PROPERTY_SET.getIdentifiers();
 		assertFalse(ids.isEmpty());
@@ -63,7 +63,7 @@ public class TestBeanPropertyPostProcessors {
 	}
 
 	@Test
-	public void testEmbeddedIdPostProcessor() {
+	void testEmbeddedIdPostProcessor() {
 
 		final BeanPropertySet<TestJpaEntityEmbeddedId> PS = BeanIntrospector.get()
 				.getPropertySet(TestJpaEntityEmbeddedId.class);
@@ -81,7 +81,7 @@ public class TestBeanPropertyPostProcessors {
 	}
 
 	@Test
-	public void testEnumeratedPostProcessor() {
+	void testEnumeratedPostProcessor() {
 
 		PathProperty<TestEntityEnum> prp = PROPERTY_SET.getProperty("enumeration", TestEntityEnum.class).orElse(null);
 		assertNotNull(prp);
@@ -96,7 +96,7 @@ public class TestBeanPropertyPostProcessors {
 	}
 
 	@Test
-	public void testTemporalPostProcessor() {
+	void testTemporalPostProcessor() {
 
 		PathProperty<?> prp = PROPERTY_SET.getProperty("date").orElse(null);
 		assertNotNull(prp);
@@ -111,7 +111,7 @@ public class TestBeanPropertyPostProcessors {
 	}
 
 	@Test
-	public void testTransientPostProcessor() {
+	void testTransientPostProcessor() {
 
 		assertFalse(PROPERTY_SET.getProperty("toIgnore").isPresent());
 

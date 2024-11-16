@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import com.holonplatform.jpa.processors.internal.utils.JpaAPIUtils;
 
-public class TestJpaUtils {
+class TestJpaUtils {
 
 	@Test
-	public void testJpaApiPresent() {
+	void testJpaApiPresent() {
 		assertTrue(JpaAPIUtils.isJpaApiPresent());
 	}
 
