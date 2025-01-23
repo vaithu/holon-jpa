@@ -43,7 +43,7 @@ public class JpaTableBeanPropertySetPostProcessor extends AbstractJpaBeanPropert
 		if (propertySet.getConfiguration().getParameter(DataMappable.PATH).isEmpty()) {
 			if (beanClass.isAnnotationPresent(Table.class)) {
 				final String name = AnnotationUtils.getStringValue(beanClass.getAnnotation(Table.class).name());
-				if (name != null && name.trim().length() > 0) {
+				if (name != null && !name.trim().isEmpty()) {
 					propertySet.configuration(DataMappable.PATH, name);
 					LOGGER.debug(() -> "JpaTableBeanPropertySetPostProcessor: setted bean [" + beanClass
 							+ "] property set data path to [" + name + "]");

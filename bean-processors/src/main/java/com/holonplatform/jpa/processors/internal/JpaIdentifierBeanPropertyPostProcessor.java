@@ -22,6 +22,7 @@ import jakarta.persistence.Id;
 import com.holonplatform.core.beans.BeanProperty;
 import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
+import jakarta.persistence.Version;
 
 /**
  * A {@link BeanPropertyPostProcessor} to set a bean property as identifier using the JPA <code>Id</code> and
@@ -53,6 +54,25 @@ public class JpaIdentifierBeanPropertyPostProcessor extends AbstractJpaBeanPrope
 						+ "] setted as identifier since part of an EmbeddedId");
 			}
 		});
+
+		// check Version
+		property.getParent().ifPresent(parent -> {
+			if (parent instanceof BeanProperty beanProperty && beanProperty.hasAnnotation(Version.class)) {
+				property.version(true);
+				LOGGER.debug(() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property
+						+ "] setted as identifier since part of an Version");
+			}
+		});
+
+		// check Version
+		property.getAnnotation(Version.class).ifPresent(a -> {
+			property.version(true);
+			LOGGER.debug(
+					() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property + "] setted as version");
+		});
+
+
+
 		return property;
 	}
 

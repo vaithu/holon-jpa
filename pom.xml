@@ -67,6 +67,7 @@
 		<module>bean-processors</module>
 		<module>bom</module>
 		<module>documentation</module>
+		<module>holon-property-processor</module>
 	</modules>
 
 	<dependencies>
