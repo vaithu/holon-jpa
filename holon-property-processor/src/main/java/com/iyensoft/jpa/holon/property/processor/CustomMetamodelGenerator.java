@@ -5,7 +5,6 @@ import com.holonplatform.core.internal.utils.TypeUtils;
 import jakarta.persistence.Entity;
 import org.hibernate.processor.Context;
 import org.hibernate.processor.HibernateProcessor;
-import org.hibernate.processor.model.Metamodel;
 
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
@@ -18,12 +17,11 @@ import javax.lang.model.element.VariableElement;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.Set;
 
 @SupportedAnnotationTypes("jakarta.persistence.Entity")
-@SupportedSourceVersion(SourceVersion.RELEASE_17)
+@SupportedSourceVersion(SourceVersion.RELEASE_21)
 public class CustomMetamodelGenerator extends HibernateProcessor {
     private Context context;
     
@@ -73,46 +71,6 @@ public class CustomMetamodelGenerator extends HibernateProcessor {
         }
     }
 
-    private static void printClassDeclaration( Metamodel entity,  PrintWriter pw) {
-        pw.print("public ");
-        if (!entity.isImplementation() && !entity.isJakartaDataStyle()) {
-            pw.print("abstract ");
-        }
-
-        pw.print(entity.isJakartaDataStyle() ? "interface " : "class ");
-        pw.print(getGeneratedClassName(entity));
-        String superClassName = entity.getSupertypeName();
-        if (superClassName != null) {
-            String var10001 = getGeneratedSuperclassName(entity, superClassName);
-            pw.print(" extends " + var10001);
-        }
-
-        if (entity.isImplementation()) {
-            pw.print(entity.getElement().getKind() == ElementKind.CLASS ? " extends " : " implements ");
-            pw.print(entity.getSimpleName());
-        }
-
-        pw.println(" {");
-    }
-
-    private static  String getGeneratedClassName( Metamodel entity) {
-        String className = entity.getSimpleName();
-        return entity.isJakartaDataStyle() ? "_" + className : className + "_";
-    }
-
-    private static  String getGeneratedSuperclassName( Metamodel entity,  String superClassName) {
-        if (entity.isJakartaDataStyle()) {
-            int lastDot = superClassName.lastIndexOf(46);
-            if (lastDot < 0) {
-                return "_" + superClassName;
-            } else {
-                String var10000 = superClassName.substring(0, lastDot + 1);
-                return var10000 + "_" + superClassName.substring(lastDot + 1);
-            }
-        } else {
-            return superClassName + "_";
-        }
-    }
 
     private String toSnakeCase(String input) {
         return input.replaceAll("([a-z])([A-Z]+)", "$1_$2").toLowerCase();

@@ -42,11 +42,18 @@
             <artifactId>logback-classic</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen -->
+        <!-- Hibernate annotation processor (renamed from hibernate-jpamodelgen in Hibernate 7.x / Spring Boot 4) -->
         <dependency>
             <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>6.6.1.Final</version>
+            <artifactId>hibernate-processor</artifactId>
+            <version>7.0.1.Final</version>
+        </dependency>
+        <!-- hibernate-core needed so hibernate-processor 7.x can load its internal classes during annotation processing -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>7.0.1.Final</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

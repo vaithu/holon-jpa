@@ -84,26 +84,9 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.openrewrite.maven</groupId>
-				<artifactId>rewrite-maven-plugin</artifactId>
-				<version>5.10.0</version>
-				<configuration>
-					<activeRecipes>
-						<recipe>org.openrewrite.java.spring.boot3.UpgradeSpringBoot_3_1</recipe>
-					</activeRecipes>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.openrewrite.recipe</groupId>
-						<artifactId>rewrite-spring</artifactId>
-						<version>5.0.12</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<!-- Aggregate javadocs -->
+        <build>
+                <plugins>
+                        <!-- Aggregate javadocs -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
