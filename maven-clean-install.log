@@ -1,0 +1,193 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] com.holon-platform.jpa:holon-jpa-root                              [pom]
+[INFO] com.holon-platform.jpa:holon-jpa-bean-processors                   [jar]
+[INFO] com.holon-platform.jpa:holon-jpa-bom                               [pom]
+[INFO] com.holon-platform.jpa:documentation-jpa                           [jar]
+[INFO] 
+[INFO] ---------------< com.holon-platform.jpa:holon-jpa-root >----------------
+[INFO] Building com.holon-platform.jpa:holon-jpa-root 10.0.0              [1/4]
+[INFO]   from pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ holon-jpa-root ---
+[INFO] Deleting C:\Users\sxp267\IdeaProjects\holon-jpa\target
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (pre-unit-test) @ holon-jpa-root ---
+[INFO] surefireArgLine set to -javaagent:C:\\Users\\sxp267\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\sxp267\\IdeaProjects\\holon-jpa\\target\\coverage-reports\\jacoco-ut.exec
+[INFO] 
+[INFO] --- remote-resources:3.1.0:process (default) @ holon-jpa-root ---
+[INFO] Preparing remote bundle com.holon-platform:holon-shared:1.0.6
+[INFO] Copying 6 resources from 1 bundle.
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (post-unit-test) @ holon-jpa-root ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ holon-jpa-root ---
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\pom.xml to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\holon-jpa-root\10.0.0\holon-jpa-root-10.0.0.pom
+[INFO] 
+[INFO] ----------< com.holon-platform.jpa:holon-jpa-bean-processors >----------
+[INFO] Building com.holon-platform.jpa:holon-jpa-bean-processors 10.0.0   [2/4]
+[INFO]   from bean-processors\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ holon-jpa-bean-processors ---
+[INFO] Deleting C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\target
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (pre-unit-test) @ holon-jpa-bean-processors ---
+[INFO] surefireArgLine set to -javaagent:C:\\Users\\sxp267\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\sxp267\\IdeaProjects\\holon-jpa\\bean-processors\\target\\coverage-reports\\jacoco-ut.exec
+[INFO] 
+[INFO] --- remote-resources:3.1.0:process (default) @ holon-jpa-bean-processors ---
+[INFO] Preparing remote bundle com.holon-platform:holon-shared:1.0.6
+[INFO] Copying 6 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ holon-jpa-bean-processors ---
+[INFO] Copying 2 resources from src\main\resources to target\classes
+[INFO] Copying 6 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ holon-jpa-bean-processors ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 12 source files with javac [debug release 21] to target\classes
+[WARNING] /C:/Users/sxp267/IdeaProjects/holon-jpa/bean-processors/src/main/java/com/holonplatform/jpa/processors/internal/JpaIdentifierBeanPropertyPostProcessor.java:[51,102] unchecked call to <A>hasAnnotation(java.lang.Class<A>) as a member of the raw type com.holonplatform.core.beans.BeanProperty
+[WARNING] /C:/Users/sxp267/IdeaProjects/holon-jpa/bean-processors/src/main/java/com/holonplatform/jpa/processors/internal/JpaIdentifierBeanPropertyPostProcessor.java:[60,102] unchecked call to <A>hasAnnotation(java.lang.Class<A>) as a member of the raw type com.holonplatform.core.beans.BeanProperty
+[INFO] /C:/Users/sxp267/IdeaProjects/holon-jpa/bean-processors/src/main/java/com/holonplatform/jpa/processors/internal/JpaTemporalBeanPropertyPostProcessor.java: C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\src\main\java\com\holonplatform\jpa\processors\internal\JpaTemporalBeanPropertyPostProcessor.java uses or overrides a deprecated API.
+[INFO] /C:/Users/sxp267/IdeaProjects/holon-jpa/bean-processors/src/main/java/com/holonplatform/jpa/processors/internal/JpaTemporalBeanPropertyPostProcessor.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ holon-jpa-bean-processors ---
+[INFO] Copying 1 resource from src\test\resources to target\test-classes
+[INFO] Copying 6 resources from target\maven-shared-archive-resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ holon-jpa-bean-processors ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 7 source files with javac [debug release 21] to target\test-classes
+[INFO] /C:/Users/sxp267/IdeaProjects/holon-jpa/bean-processors/src/test/java/com/holonplatform/jpa/test/data/TestJpaEntity.java: C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\src\test\java\com\holonplatform\jpa\test\data\TestJpaEntity.java uses or overrides a deprecated API.
+[INFO] /C:/Users/sxp267/IdeaProjects/holon-jpa/bean-processors/src/test/java/com/holonplatform/jpa/test/data/TestJpaEntity.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ holon-jpa-bean-processors ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.holonplatform.jpa.test.TestBeanPropertyPostProcessors
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.474 s -- in com.holonplatform.jpa.test.TestBeanPropertyPostProcessors
+[INFO] Running com.holonplatform.jpa.test.TestBeanPropertySetPostProcessors
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in com.holonplatform.jpa.test.TestBeanPropertySetPostProcessors
+[INFO] Running com.holonplatform.jpa.test.TestJpaUtils
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in com.holonplatform.jpa.test.TestJpaUtils
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (post-unit-test) @ holon-jpa-bean-processors ---
+[INFO] Loading execution data file C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\target\coverage-reports\jacoco-ut.exec
+[INFO] Analyzed bundle 'com.holon-platform.jpa:holon-jpa-bean-processors' with 12 classes
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ holon-jpa-bean-processors ---
+[INFO] Building jar: C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\target\holon-jpa-bean-processors-10.0.0.jar
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ holon-jpa-bean-processors ---
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\pom.xml to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\holon-jpa-bean-processors\10.0.0\holon-jpa-bean-processors-10.0.0.pom
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\bean-processors\target\holon-jpa-bean-processors-10.0.0.jar to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\holon-jpa-bean-processors\10.0.0\holon-jpa-bean-processors-10.0.0.jar
+[INFO] 
+[INFO] ----------------< com.holon-platform.jpa:holon-jpa-bom >----------------
+[INFO] Building com.holon-platform.jpa:holon-jpa-bom 10.0.0               [3/4]
+[INFO]   from bom\pom.xml
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ holon-jpa-bom ---
+[INFO] Deleting C:\Users\sxp267\IdeaProjects\holon-jpa\bom\target
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (pre-unit-test) @ holon-jpa-bom ---
+[INFO] surefireArgLine set to -javaagent:C:\\Users\\sxp267\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.12\\org.jacoco.agent-0.8.12-runtime.jar=destfile=C:\\Users\\sxp267\\IdeaProjects\\holon-jpa\\bom\\target\\coverage-reports\\jacoco-ut.exec
+[INFO] 
+[INFO] --- remote-resources:3.1.0:process (default) @ holon-jpa-bom ---
+[INFO] Preparing remote bundle com.holon-platform:holon-shared:1.0.6
+[INFO] Copying 6 resources from 1 bundle.
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (post-unit-test) @ holon-jpa-bom ---
+[INFO] Skipping JaCoCo execution due to missing execution data file.
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ holon-jpa-bom ---
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\bom\pom.xml to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\holon-jpa-bom\10.0.0\holon-jpa-bom-10.0.0.pom
+[INFO] 
+[INFO] --------------< com.holon-platform.jpa:documentation-jpa >--------------
+[INFO] Building com.holon-platform.jpa:documentation-jpa 10.0.0           [4/4]
+[INFO]   from documentation\pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ documentation-jpa ---
+[INFO] Deleting C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\target
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (pre-unit-test) @ documentation-jpa ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] surefireArgLine set to empty
+[INFO] 
+[INFO] --- remote-resources:3.1.0:process (default) @ documentation-jpa ---
+[INFO] Preparing remote bundle com.holon-platform:holon-shared:1.0.6
+[INFO] Copying 6 resources from 1 bundle.
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ documentation-jpa ---
+[INFO] Copying 1 resource from src\docs\asciidoc to target\classes
+[INFO] Copying 6 resources from target\maven-shared-archive-resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ documentation-jpa ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug release 21] to target\classes
+[INFO] /C:/Users/sxp267/IdeaProjects/holon-jpa/documentation/src/main/java/com/holonplatform/jpa/examples/JpaPostProcessorsExample.java: C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\src\main\java\com\holonplatform\jpa\examples\JpaPostProcessorsExample.java uses or overrides a deprecated API.
+[INFO] /C:/Users/sxp267/IdeaProjects/holon-jpa/documentation/src/main/java/com/holonplatform/jpa/examples/JpaPostProcessorsExample.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ documentation-jpa ---
+[INFO] skip non existing resourceDirectory C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\src\test\resources
+[INFO] Copying 6 resources from target\maven-shared-archive-resources to target\test-classes
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ documentation-jpa ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.2:test (default-test) @ documentation-jpa ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (post-unit-test) @ documentation-jpa ---
+[INFO] Skipping JaCoCo execution because property jacoco.skip is set.
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ documentation-jpa ---
+[INFO] Building jar: C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\target\documentation-jpa-10.0.0.jar
+[INFO] 
+[INFO] --- asciidoctor:2.2.4:process-asciidoc (asciidoc-to-html) @ documentation-jpa ---
+2026-04-03T17:32:50.094-04:00 [main] WARN FilenoUtil : Native subprocess control requires open access to the JDK IO subsystem
+Pass '--add-opens java.base/sun.nio.ch=ALL-UNNAMED --add-opens java.base/java.io=ALL-UNNAMED' to enable.
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 0 resource
+[INFO] Converted C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\src\docs\asciidoc\reference\holon-jpa.adoc
+[INFO] 
+[INFO] --- asciidoctor:2.2.4:process-asciidoc (asciidoc-to-pdf) @ documentation-jpa ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 0 resource
+[INFO] Converted C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\src\docs\asciidoc\reference\holon-jpa.adoc
+[INFO] 
+[INFO] --- assembly:3.7.1:single (assembly-docs) @ documentation-jpa ---
+[INFO] Building zip: C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\target\documentation-jpa-10.0.0-documentation.zip
+[INFO] 
+[INFO] --- install:3.1.4:install (default-install) @ documentation-jpa ---
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\pom.xml to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\documentation-jpa\10.0.0\documentation-jpa-10.0.0.pom
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\target\documentation-jpa-10.0.0.jar to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\documentation-jpa\10.0.0\documentation-jpa-10.0.0.jar
+[INFO] Installing C:\Users\sxp267\IdeaProjects\holon-jpa\documentation\target\documentation-jpa-10.0.0-documentation.zip to C:\Users\sxp267\.m2\repository\com\holon-platform\jpa\documentation-jpa\10.0.0\documentation-jpa-10.0.0-documentation.zip
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for com.holon-platform.jpa:holon-jpa-root 10.0.0:
+[INFO] 
+[INFO] com.holon-platform.jpa:holon-jpa-root .............. SUCCESS [  2.211 s]
+[INFO] com.holon-platform.jpa:holon-jpa-bean-processors ... SUCCESS [ 12.538 s]
+[INFO] com.holon-platform.jpa:holon-jpa-bom ............... SUCCESS [  0.530 s]
+[INFO] com.holon-platform.jpa:documentation-jpa ........... SUCCESS [ 16.564 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  32.003 s
+[INFO] Finished at: 2026-04-03T17:33:01-04:00
+[INFO] ------------------------------------------------------------------------

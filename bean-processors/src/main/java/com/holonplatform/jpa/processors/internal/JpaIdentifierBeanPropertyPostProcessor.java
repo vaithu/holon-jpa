@@ -71,8 +71,6 @@ public class JpaIdentifierBeanPropertyPostProcessor extends AbstractJpaBeanPrope
 					() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property + "] setted as version");
 		});
 
-
-
 		return property;
 	}
 
