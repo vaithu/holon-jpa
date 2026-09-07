@@ -33,6 +33,8 @@ import jakarta.persistence.Version;
 @Priority(1000)
 public class JpaIdentifierBeanPropertyPostProcessor extends AbstractJpaBeanPropertyPostProcessor {
 
+	private static final String LOG_PREFIX = "JpaIdentifierBeanPropertyPostProcessor: property [";
+
 	/*
 	 * (non-Javadoc)
 	 * @see com.holonplatform.jpa.internal.processors.AbstractJpaBeanPropertyPostProcessor#processJpaBeanProperty(com.
@@ -43,32 +45,28 @@ public class JpaIdentifierBeanPropertyPostProcessor extends AbstractJpaBeanPrope
 		// check Id
 		property.getAnnotation(Id.class).ifPresent(a -> {
 			property.identifier(true);
-			LOGGER.debug(
-					() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property + "] setted as identifier");
+			LOGGER.debug(() -> LOG_PREFIX + property + "] setted as identifier");
 		});
 		// check EmbeddedId
 		property.getParent().ifPresent(parent -> {
-			if (parent instanceof BeanProperty beanProperty && beanProperty.hasAnnotation(EmbeddedId.class)) {
+			if (parent instanceof BeanProperty<?> beanProperty && beanProperty.hasAnnotation(EmbeddedId.class)) {
 				property.identifier(true);
-				LOGGER.debug(() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property
-						+ "] setted as identifier since part of an EmbeddedId");
+				LOGGER.debug(() -> LOG_PREFIX + property + "] setted as identifier since part of an EmbeddedId");
 			}
 		});
 
 		// check Version
 		property.getParent().ifPresent(parent -> {
-			if (parent instanceof BeanProperty beanProperty && beanProperty.hasAnnotation(Version.class)) {
+			if (parent instanceof BeanProperty<?> beanProperty && beanProperty.hasAnnotation(Version.class)) {
 				property.version(true);
-				LOGGER.debug(() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property
-						+ "] setted as identifier since part of an Version");
+				LOGGER.debug(() -> LOG_PREFIX + property + "] setted as identifier since part of an Version");
 			}
 		});
 
 		// check Version
 		property.getAnnotation(Version.class).ifPresent(a -> {
 			property.version(true);
-			LOGGER.debug(
-					() -> "JpaIdentifierBeanPropertyPostProcessor: property [" + property + "] setted as version");
+			LOGGER.debug(() -> LOG_PREFIX + property + "] setted as version");
 		});
 
 		return property;

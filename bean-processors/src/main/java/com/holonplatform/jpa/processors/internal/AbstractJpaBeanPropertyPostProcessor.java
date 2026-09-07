@@ -56,6 +56,7 @@ public abstract class AbstractJpaBeanPropertyPostProcessor implements BeanProper
 	 * @param beanOrNestedClass Bean class
 	 * @return Processed bean property
 	 */
+	@SuppressWarnings("java:S1452")
 	protected abstract Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass);
 
 }
