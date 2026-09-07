@@ -16,15 +16,13 @@
 package com.holonplatform.jpa.processors.internal;
 
 import jakarta.annotation.Priority;
-import jakarta.persistence.Temporal;
 
 import com.holonplatform.core.beans.BeanProperty.Builder;
 import com.holonplatform.core.beans.BeanPropertyPostProcessor;
 import com.holonplatform.core.temporal.TemporalType;
 
 /**
- * A {@link BeanPropertyPostProcessor} to setup a the property {@link TemporalType} using the JPA <code>Temporal</code>
- * annotation.
+ * A {@link BeanPropertyPostProcessor} to setup the property {@link TemporalType} using its Java temporal type.
  * <p>
  * Property configuration is processed only if the bean property has not a {@link TemporalType} configured yet.
  * </p>
@@ -42,38 +40,17 @@ public class JpaTemporalBeanPropertyPostProcessor extends AbstractJpaBeanPropert
 	@Override
 	protected Builder<?> processJpaBeanProperty(Builder<?> property, Class<?> beanOrNestedClass) {
 		if (property.getConfiguration().getTemporalType().isEmpty()) {
-			property.getAnnotation(Temporal.class).ifPresent(a -> {
-				property.temporalType(convert(a.value()));
-				LOGGER.debug(() -> "JpaTemporalBeanPropertyPostProcessor: setted property [" + property
-						+ "] temporalType to: [" + a.value() + "]");
+			TemporalType.getTemporalType(property.getType()).ifPresent(temporalType -> {
+				property.temporalType(temporalType);
+				LOGGER.debug(() -> "JpaTemporalBeanPropertyPostProcessor: set property [" + property
+						+ "] temporalType to: [" + temporalType + "]");
 			});
 		} else {
 			LOGGER.debug(() -> "JpaTemporalBeanPropertyPostProcessor: property [" + property
 					+ "] temporal type is already configured [" + property.getTemporalType().get()
-					+ "]: skip JPA Temporal annotation processing");
+					+ "]: skip Java temporal type processing");
 		}
 		return property;
-	}
-
-	/**
-	 * Convert a JPA {@link jakarta.persistence.TemporalType} enumeration value into a {@link TemporalType} value.
-	 * @param temporalType JPA enumeration value
-	 * @return {@link TemporalType} value
-	 */
-	private static TemporalType convert(jakarta.persistence.TemporalType temporalType) {
-		if (temporalType != null) {
-			switch (temporalType) {
-			case DATE:
-				return TemporalType.DATE;
-			case TIME:
-				return TemporalType.TIME;
-			case TIMESTAMP:
-				return TemporalType.DATE_TIME;
-			default:
-				break;
-			}
-		}
-		return null;
 	}
 
 }

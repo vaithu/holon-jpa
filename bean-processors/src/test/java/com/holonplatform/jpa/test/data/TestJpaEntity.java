@@ -16,7 +16,8 @@
 package com.holonplatform.jpa.test.data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,8 +25,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -45,12 +44,10 @@ public class TestJpaEntity implements Serializable {
 	private TestEntityEnum enumeration2;
 
 	@Column(name = "the_date")
-	@Temporal(TemporalType.DATE)
-	private Date date;
+	private LocalDate date;
 
 	@com.holonplatform.core.beans.Temporal(com.holonplatform.core.temporal.TemporalType.DATE_TIME)
-	@Temporal(TemporalType.DATE)
-	private Date date2;
+	private LocalDateTime date2;
 
 	@Transient
 	private String toIgnore;
@@ -79,19 +76,19 @@ public class TestJpaEntity implements Serializable {
 		this.enumeration2 = enumeration2;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
-	public Date getDate2() {
+	public LocalDateTime getDate2() {
 		return date2;
 	}
 
-	public void setDate2(Date date2) {
+	public void setDate2(LocalDateTime date2) {
 		this.date2 = date2;
 	}
 

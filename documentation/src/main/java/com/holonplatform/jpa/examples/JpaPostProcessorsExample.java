@@ -15,7 +15,7 @@
  */
 package com.holonplatform.jpa.examples;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 
@@ -25,7 +25,6 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
 import jakarta.persistence.Transient;
 
 import com.holonplatform.core.beans.BeanPropertySet;
@@ -52,8 +51,7 @@ public class JpaPostProcessorsExample {
 		@Enumerated(EnumType.ORDINAL)
 		private MyEnum enumeration;
 
-		@Temporal(jakarta.persistence.TemporalType.DATE)
-		private Date date;
+		private LocalDate date;
 
 		@Transient
 		private String toIgnore;
